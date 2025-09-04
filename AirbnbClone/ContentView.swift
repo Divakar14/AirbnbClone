@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var viewModel = ListingViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        
+        NavigationStack {
+            List(viewModel.listings) { listing in
+                Text(listing.title)
+            }
+            .navigationTitle("Airbnb")
         }
-        .padding()
+        
     }
 }
 
