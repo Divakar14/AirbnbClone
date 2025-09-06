@@ -17,7 +17,7 @@ struct ContentView: View {
             
             TabView(selection: $seletedTab){
                 NavigationStack{
-                    //ExploreView()
+                    ExploreView()
                 }
                 .tabItem{
                     Image(systemName:"magnifyingglass")
@@ -26,7 +26,7 @@ struct ContentView: View {
                 .tag(0)
                 
                 NavigationStack{
-                    //WishlistView()
+                    WishlistView()
                 }
                 .tabItem{
                     Image(systemName:"heart")
@@ -35,7 +35,7 @@ struct ContentView: View {
                 .tag(1)
                 
                 NavigationStack{
-                    //TripsView()
+                    TripsView()
                 }
                 .tabItem{
                     Image("Airbnb")
@@ -45,7 +45,7 @@ struct ContentView: View {
                 .tag(2)
                 
                 NavigationStack{
-                    //MessagesView()
+                    MessagesView()
                 }
                 .tabItem{
                     Image(systemName: "bubble.left")
@@ -54,7 +54,7 @@ struct ContentView: View {
                 .tag(3)
                 
                 NavigationStack{
-                    //ProfileViews()
+                    ProfileViews()
                 }
                 .tabItem{
                     Image(systemName: "person.circle")

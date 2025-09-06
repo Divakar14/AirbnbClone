@@ -23,10 +23,10 @@ struct ExploreView: View {
                 Button {
                     isSearching = true
                 } label: {
-                    //SearchBarView(searchText: $searchText)
+                    SearchBarView(searchText: $searchText)
                 }
                 .fullScreenCover(isPresented: $isSearching) {
-                    //SearchView(isSearching: $isSearching)
+                    SearchView(isSearching: $isSearching)
                 }
 
                 // Top Filter Tabs
@@ -72,8 +72,8 @@ struct ExploreView: View {
         VStack(alignment: .leading, spacing: 24) {
             VStack(alignment: .leading) {
                 NavigationLink {
-                    /*RecentlyViewedHomesView()
-                        .toolbar(.hidden, for: .tabBar)*/
+                    RecentlyViewedHomesView()
+                        .toolbar(.hidden, for: .tabBar)
                 } label: {
                     HStack {
                         Text("Recently viewed homes")
@@ -91,10 +91,10 @@ struct ExploreView: View {
                     HStack(spacing: 12) {
                         ForEach(MockData.sampleCards) { card in
                             NavigationLink {
-                                /*CardsDetailView(cardId: card.id)
-                                    .toolbar(.hidden, for: .tabBar)*/
+                                CardsDetailView(cardId: card.id)
+                                    .toolbar(.hidden, for: .tabBar)
                             } label: {
-                                /*CardsView(
+                                CardsView(
                                     flatName: card.flatName,
                                     location: card.location,
                                     cost: card.cost,
@@ -102,7 +102,7 @@ struct ExploreView: View {
                                     label: card.label,
                                     imageName: card.imageName,
                                     imageURL: card.imageURL
-                                )*/
+                                )
                             }
                         }
                     }
@@ -112,11 +112,11 @@ struct ExploreView: View {
             
             VStack(alignment: .leading) {
                 NavigationLink {
-                    /*SectionDetailView(
+                    SectionDetailView(
                         sectionTitle: "Available for similar dates",
                         cards: MockData.availableForSimilarDates
                     )
-                    .toolbar(.hidden, for: .tabBar)*/
+                    .toolbar(.hidden, for: .tabBar)
                 } label: {
                     HStack {
                         Text("Available for similar dates")
@@ -134,10 +134,10 @@ struct ExploreView: View {
                     HStack(spacing: 12) {
                         ForEach(MockData.availableForSimilarDates) { card in
                             NavigationLink {
-                                /*CardsDetailView(cardId: card.id)
-                                    .toolbar(.hidden, for: .tabBar)*/
+                                CardsDetailView(cardId: card.id)
+                                    .toolbar(.hidden, for: .tabBar)
                             } label: {
-                                /*CardsView(
+                                CardsView(
                                     flatName: card.flatName,
                                     location: card.location,
                                     cost: card.cost,
@@ -145,7 +145,7 @@ struct ExploreView: View {
                                     label: card.label,
                                     imageName: card.imageName,
                                     imageURL: card.imageURL
-                                )*/
+                                )
                             }
                         }
                     }
@@ -155,11 +155,11 @@ struct ExploreView: View {
             
             VStack(alignment: .leading) {
                 NavigationLink {
-                    /*SectionDetailView(
+                    SectionDetailView(
                         sectionTitle: "Stay in Puducherry",
                         cards: MockData.stayInPuducherry
                     )
-                    .toolbar(.hidden, for: .tabBar)*/
+                    .toolbar(.hidden, for: .tabBar)
                 } label: {
                     HStack {
                         Text("Stay in Puducherry")
@@ -177,10 +177,10 @@ struct ExploreView: View {
                     HStack(spacing: 12) {
                         ForEach(MockData.stayInPuducherry) { card in
                             NavigationLink {
-                                /*CardsDetailView(cardId: card.id)
-                                    .toolbar(.hidden, for: .tabBar)*/
+                                CardsDetailView(cardId: card.id)
+                                    .toolbar(.hidden, for: .tabBar)
                             } label: {
-                                /*CardsView(
+                                CardsView(
                                     flatName: card.flatName,
                                     location: card.location,
                                     cost: card.cost,
@@ -188,7 +188,7 @@ struct ExploreView: View {
                                     label: card.label,
                                     imageName: card.imageName,
                                     imageURL: card.imageURL
-                                )*/
+                                )
                             }
                         }
                     }
@@ -198,11 +198,11 @@ struct ExploreView: View {
             
             VStack(alignment: .leading) {
                 NavigationLink {
-                    /*SectionDetailView(
+                    SectionDetailView(
                         sectionTitle: "Stay in Paris",
                         cards: MockData.stayInParis
                     )
-                    .toolbar(.hidden, for: .tabBar)*/
+                    .toolbar(.hidden, for: .tabBar)
                 } label: {
                     HStack {
                         Text("Stay in Paris")
@@ -220,10 +220,10 @@ struct ExploreView: View {
                     HStack(spacing: 12) {
                         ForEach(MockData.stayInParis) { card in
                             NavigationLink {
-                                /*CardsDetailView(cardId: card.id)
-                                    .toolbar(.hidden, for: .tabBar)*/
+                                CardsDetailView(cardId: card.id)
+                                    .toolbar(.hidden, for: .tabBar)
                             } label: {
-                                /*CardsView(
+                                CardsView(
                                     flatName: card.flatName,
                                     location: card.location,
                                     cost: card.cost,
@@ -231,7 +231,7 @@ struct ExploreView: View {
                                     label: card.label,
                                     imageName: card.imageName,
                                     imageURL: card.imageURL
-                                )*/
+                                )
                             }
                         }
                     }
@@ -245,11 +245,11 @@ struct ExploreView: View {
         VStack(alignment: .leading, spacing: 24) {
             VStack(alignment: .leading) {
                 NavigationLink {
-                    /*SectionDetailView(
+                    SectionDetailView(
                         sectionTitle: "Airbnb Originals",
                         cards: MockData.airbnbOriginals
                     )
-                    .toolbar(.hidden, for: .tabBar)*/
+                    .toolbar(.hidden, for: .tabBar)
                 } label: {
                     HStack {
                         Text("Airbnb Originals")
@@ -267,10 +267,10 @@ struct ExploreView: View {
                     HStack(spacing: 12) {
                         ForEach(MockData.airbnbOriginals) { experience in
                             NavigationLink {
-                                /*CardsDetailView(cardId: experience.id)
-                                    .toolbar(.hidden, for: .tabBar)*/
+                                CardsDetailView(cardId: experience.id)
+                                    .toolbar(.hidden, for: .tabBar)
                             } label: {
-                                /*CardsView(
+                                CardsView(
                                     flatName: experience.flatName,
                                     location: experience.location,
                                     cost: experience.cost,
@@ -278,7 +278,7 @@ struct ExploreView: View {
                                     label: experience.label,
                                     imageName: experience.imageName,
                                     imageURL: experience.imageURL
-                                )*/
+                                )
                             }
                         }
                     }
@@ -293,11 +293,11 @@ struct ExploreView: View {
                 
                 VStack(alignment: .leading) {
                     NavigationLink {
-                        /*SectionDetailView(
+                        SectionDetailView(
                             sectionTitle: "Photography",
                             cards: MockData.photographyExperiences
                         )
-                        .toolbar(.hidden, for: .tabBar)*/
+                        .toolbar(.hidden, for: .tabBar)
                     } label: {
                         HStack {
                             Text("Photography")
@@ -313,10 +313,10 @@ struct ExploreView: View {
                         HStack(spacing: 12) {
                             ForEach(MockData.photographyExperiences) { experience in
                                 NavigationLink {
-                                    /*CardsDetailView(cardId: experience.id)
-                                        .toolbar(.hidden, for: .tabBar)*/
+                                    CardsDetailView(cardId: experience.id)
+                                        .toolbar(.hidden, for: .tabBar)
                                 } label: {
-                                    /*CardsView(
+                                    CardsView(
                                         flatName: experience.flatName,
                                         location: experience.location,
                                         cost: experience.cost,
@@ -324,7 +324,7 @@ struct ExploreView: View {
                                         label: experience.label,
                                         imageName: experience.imageName,
                                         imageURL: experience.imageURL
-                                    )*/
+                                    )
                                 }
                             }
                         }
@@ -335,11 +335,11 @@ struct ExploreView: View {
             
             VStack(alignment: .leading) {
                 NavigationLink {
-                    /*SectionDetailView(
+                    SectionDetailView(
                         sectionTitle: "All experiences in Promenade Beach",
                         cards: MockData.allExperiencesPondicherry
                     )
-                    .toolbar(.hidden, for: .tabBar)*/
+                    .toolbar(.hidden, for: .tabBar)
                 } label: {
                     HStack {
                         Text("All experiences in Promenade Beach")
@@ -357,10 +357,10 @@ struct ExploreView: View {
                     HStack(spacing: 12) {
                         ForEach(MockData.allExperiencesPondicherry) { experience in
                             NavigationLink {
-                                /*CardsDetailView(cardId: experience.id)
-                                    .toolbar(.hidden, for: .tabBar)*/
+                                CardsDetailView(cardId: experience.id)
+                                    .toolbar(.hidden, for: .tabBar)
                             } label: {
-                                /*CardsView(
+                                CardsView(
                                     flatName: experience.flatName,
                                     location: experience.location,
                                     cost: experience.cost,
@@ -368,7 +368,7 @@ struct ExploreView: View {
                                     label: experience.label,
                                     imageName: experience.imageName,
                                     imageURL: experience.imageURL
-                                )*/
+                                )
                             }
                         }
                     }
@@ -390,7 +390,7 @@ struct ExploreView: View {
                         ForEach(MockData.servicesInPromenadeBeach) { service in
                             Button {
                             } label: {
-                                //ServiceCardView(service: service)
+                                ServiceCardView(service: service)
                             }
                         }
                     }
@@ -412,10 +412,10 @@ struct ExploreView: View {
                         HStack(spacing: 12) {
                             ForEach(MockData.photographyExperiences) { experience in
                                 NavigationLink {
-                                    /*CardsDetailView(cardId: experience.id)
-                                        .toolbar(.hidden, for: .tabBar)*/
+                                    CardsDetailView(cardId: experience.id)
+                                        .toolbar(.hidden, for: .tabBar)
                                 } label: {
-                                    /*CardsView(
+                                    CardsView(
                                         flatName: experience.flatName,
                                         location: experience.location,
                                         cost: experience.cost,
@@ -423,7 +423,7 @@ struct ExploreView: View {
                                         label: experience.label,
                                         imageName: experience.imageName,
                                         imageURL: experience.imageURL
-                                    )*/
+                                    )
                                 }
                             }
                         }
