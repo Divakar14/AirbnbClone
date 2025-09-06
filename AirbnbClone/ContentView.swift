@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @State private var seletedTab:Int = 0
+    
     var body: some View {
+        
         VStack{
+            
             TabView(selection: $seletedTab){
                 NavigationStack{
                     //ExploreView()
@@ -58,9 +62,11 @@ struct ContentView: View {
                 }
                 .tag(4)
                 .badge("")
+                
             }
-            //.tint(Theme.warning)
+            .tint(Theme.warning)
         }
+        
     }
 }
 #Preview {
