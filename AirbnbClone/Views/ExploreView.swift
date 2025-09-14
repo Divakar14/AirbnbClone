@@ -6,15 +6,20 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct ExploreView: View {
+    
     @State private var searchText = ""
     @State private var isSearching = false
     @State private var selectedFilter: String = "Homes"
     
+    @StateObject private var viewModel = ExploreViewModel()
+    
     let filters = ["Homes", "Experience", "Services"]
-
+    
     var body: some View {
+        
         ZStack {
             Theme.background
             VStack(spacing: 20) {
@@ -28,7 +33,7 @@ struct ExploreView: View {
                 .fullScreenCover(isPresented: $isSearching) {
                     SearchView(isSearching: $isSearching)
                 }
-
+                
                 // Top Filter Tabs
                 HStack(spacing: 24) {
                     ForEach(filters, id: \.self) { filter in
@@ -36,6 +41,7 @@ struct ExploreView: View {
                             selectedFilter = filter
                         } label: {
                             VStack {
+                                
                                 Text(filter)
                                     .font(.system(size: 16, weight: selectedFilter == filter ? .bold : .regular))
                                     .foregroundColor(selectedFilter == filter ? Theme.textPrimary : Theme.textSecondary)
@@ -49,7 +55,7 @@ struct ExploreView: View {
                     }
                 }
                 .padding(.horizontal)
-
+                
                 ScrollView {
                     VStack(alignment: .leading, spacing: 24) {
                         if selectedFilter == "Homes" {
@@ -65,8 +71,9 @@ struct ExploreView: View {
                 Spacer()
             }
         }
+        
     }
-
+    
     // MARK: - Different Sections
     var homesSection: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -86,7 +93,7 @@ struct ExploreView: View {
                     }
                     .padding(.horizontal)
                 }
-
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         ForEach(MockData.sampleCards) { card in
@@ -129,7 +136,7 @@ struct ExploreView: View {
                     }
                     .padding(.horizontal)
                 }
-
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         ForEach(MockData.availableForSimilarDates) { card in
@@ -172,7 +179,7 @@ struct ExploreView: View {
                     }
                     .padding(.horizontal)
                 }
-
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         ForEach(MockData.stayInPuducherry) { card in
@@ -215,7 +222,7 @@ struct ExploreView: View {
                     }
                     .padding(.horizontal)
                 }
-
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         ForEach(MockData.stayInParis) { card in

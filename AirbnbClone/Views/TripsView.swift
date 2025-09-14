@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TripsView: View {
+    
+    @EnvironmentObject var tabManager: TabManager
+
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -42,7 +45,7 @@ struct TripsView: View {
                 .padding(.horizontal, 40)
                 
                 Button(action: {
-                    
+                    tabManager.selectedTab = .explore
                 }) {
                     Text("Get started")
                         .font(.system(size: 16, weight: .semibold))
@@ -64,8 +67,3 @@ struct TripsView: View {
         .background(Color.white)
     }
 }
-
-#Preview {
-    TripsView()
-}
-

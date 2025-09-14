@@ -7,15 +7,19 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     
-    @State private var seletedTab:Int = 0
+    @State private var selectedTab:Int = 0
+    @StateObject private var tabManager = TabManager()
+    
+    @Binding var showSignInView: Bool
     
     var body: some View {
         
         VStack{
             
-            TabView(selection: $seletedTab){
+            TabView(selection: $tabManager.selectedTab){
                 NavigationStack{
                     ExploreView()
                 }
@@ -23,7 +27,7 @@ struct ContentView: View {
                     Image(systemName:"magnifyingglass")
                     Text("Explore")
                 }
-                .tag(0)
+                .tag(TabManager.Tab.explore)
                 
                 NavigationStack{
                     WishlistView()
@@ -32,7 +36,7 @@ struct ContentView: View {
                     Image(systemName:"heart")
                     Text("Wishlists")
                 }
-                .tag(1)
+                .tag(TabManager.Tab.wishlist)
                 
                 NavigationStack{
                     TripsView()
@@ -42,7 +46,7 @@ struct ContentView: View {
                         .renderingMode(.template)
                     Text("Trips")
                 }
-                .tag(2)
+                .tag(TabManager.Tab.trips)
                 
                 NavigationStack{
                     MessagesView()
@@ -51,24 +55,25 @@ struct ContentView: View {
                     Image(systemName: "bubble.left")
                     Text("Messages")
                 }
-                .tag(3)
+                .tag(TabManager.Tab.messages)
                 
                 NavigationStack{
-                    ProfileViews()
+                    ProfileViews(showSignInView: $showSignInView)
                 }
                 .tabItem{
                     Image(systemName: "person.circle")
                     Text("Profile")
                 }
-                .tag(4)
+                .tag(TabManager.Tab.profile)
                 .badge("")
                 
             }
+            .environmentObject(tabManager)
             .tint(Theme.warning)
         }
         
     }
 }
 #Preview {
-    ContentView()
+    ContentView(showSignInView: .constant(false))
 }

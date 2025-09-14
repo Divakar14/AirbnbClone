@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CardsDetailView: View {
+    
     let cardId: UUID
     @State private var propertyDetail: PropertyDetail
     @Environment(\.dismiss) private var dismiss
@@ -16,6 +17,8 @@ struct CardsDetailView: View {
         self.cardId = cardId
         self._propertyDetail = State(initialValue: MockData.getPropertyDetailOrDefault(for: cardId))
     }
+    
+    @State private var showBooking = false
 
     var body: some View {
         VStack {
@@ -253,15 +256,19 @@ struct CardsDetailView: View {
                     }
                     Spacer()
                     Button(action: {
-                        print("Check availability tapped for \(propertyDetail.title)")
+                        print("Reserve tapped for \(propertyDetail.title)")
+                        showBooking = true
                     }) {
-                        Text("Check availability")
+                        Text("Reserve")
                             .fontWeight(.bold)
                             .foregroundColor(Theme.textLight)
                             .padding()
                             .frame(width: 180)
                             .background(Theme.primaryColor)
                             .cornerRadius(12)
+                    }
+                    .fullScreenCover(isPresented: $showBooking) {
+                                    ReserveView(cardId: cardId)
                     }
                 }
                 .padding()

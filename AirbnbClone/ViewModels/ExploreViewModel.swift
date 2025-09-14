@@ -10,6 +10,7 @@ import SwiftUI
 
 @MainActor
 class ExploreViewModel: ObservableObject {
+    
     @Published var selectedFilter: String = "Homes"
     @Published var isLoading = false
     

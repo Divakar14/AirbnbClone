@@ -7,8 +7,23 @@
 
 import SwiftUI
 
+@MainActor
+final class ProfileViewModel: ObservableObject {
+    
+    func signOut() throws {
+        try AuthenticationManager.shared.signOut()
+    }
+    
+}
+
 struct ProfileViews: View {
+    
+    @StateObject private var viewModel = ProfileViewModel()
+    @Binding var showSignInView: Bool
+    @StateObject private var signInEmailViewModel = SignInEmailViewModel()
+    
     var body: some View {
+        
         NavigationStack {
             ScrollView {
                 VStack {
@@ -18,16 +33,16 @@ struct ProfileViews: View {
                             .fill(Theme.textPrimary)
                             .frame(width: 80, height: 80)
                             .overlay(
-                                Text("A")
+                                Text(String(signInEmailViewModel.accountUser.name.prefix(1)))
                                     .font(.system(size: 36, weight: .bold))
                                     .foregroundColor(Theme.textLight)
                             )
                         
-                        Text("SY Group")
+                        Text(signInEmailViewModel.accountUser.name)
                             .font(.title2)
                             .fontWeight(.semibold)
                         
-                        Text("sygroup.london@outlook.com")
+                        Text(signInEmailViewModel.accountUser.email)
                             .foregroundColor(Theme.textSecondary)
                             .font(.subheadline)
                     }
@@ -35,6 +50,9 @@ struct ProfileViews: View {
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(16)
+                    .onAppear {
+                        signInEmailViewModel.retreiveUser()
+                    }
                     
                     HStack(spacing: 16) {
                         ProfileOptionCard(
@@ -59,19 +77,41 @@ struct ProfileViews: View {
                     VStack(spacing: 20) {
                         Divider().padding(.top, 10)
                         
-                            Section {
-                                ProfileListItem(icon: "gearshape.fill", title: "Account settings", showBadge: true)
-                                ProfileListItem(icon: "questionmark.circle", title: "Get help")
-                                ProfileListItem(icon: "person", title: "View profile")
-                                ProfileListItem(icon: "hand.raised", title: "Privacy")
-                            }
+                        Section {
+                            ProfileListItem(icon: "gearshape.fill", title: "Account settings", showBadge: true)
+                            ProfileListItem(icon: "questionmark.circle", title: "Get help")
+                            ProfileListItem(icon: "person", title: "View profile")
+                            ProfileListItem(icon: "hand.raised", title: "Privacy")
+                        }
+                        
+                        Section {
+                            ProfileListItem(icon: "person.2", title: "Refer a host")
+                            ProfileListItem(icon: "person.crop.circle.badge.plus", title: "Find a co-host")
+                            ProfileListItem(icon: "book.closed", title: "Legal")
                             
-                            Section {
-                                ProfileListItem(icon: "person.2", title: "Refer a host")
-                                ProfileListItem(icon: "person.crop.circle.badge.plus", title: "Find a co-host")
-                                ProfileListItem(icon: "book.closed", title: "Legal")
-                                ProfileListItem(icon: "rectangle.portrait.and.arrow.right", title: "Log out")
+                            Button {
+                                Task {
+                                    do {
+                                        try viewModel.signOut()
+                                        showSignInView = true
+                                    } catch {
+                                        print(error)
+                                    }
+                                }
+                            } label: {
+                                HStack {
+                                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                                        .foregroundColor(Theme.textPrimary)
+                                    Text("Log out")
+                                        .fontWeight(.medium)
+                                        .foregroundColor(.black)
+                                    
+                                    Spacer()
+                                    
+                                }
+                                .padding(.vertical, 4)
                             }
+                        }
                         
                     }
                 }
@@ -155,5 +195,5 @@ struct ProfileListItem: View {
 }
 
 #Preview{
-    ProfileViews()
+    ProfileViews(showSignInView: .constant(false))
 }
